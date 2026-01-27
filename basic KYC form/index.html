@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC form</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <h2><strong>
+    <a class="navbar-brand">
+      <img src="img/logo.jpg" alt="Logo" width="80" height="80" class="d-inline-block align-text">
+        KYC Form
+    </a></strong></h2>
+  </div>
+</nav>
+    <div class="container">
+        <h1 class="text-center" style = "text-align: center;">Welcome to the KYC Form</h1>
+        <p class="text-center">Please fill out the form below to complete your KYC process.</p>
+    </div>
+
+<div class="new_spacer">
+   <div class="section-header-inst"> IMPORTANT INSTRUCTIONS<br>
+   <span style="font-weight: normal;">a. Fields marked with <strong>'*'</strong> are mandatory fields.</span><br>
+   <span style="font-weight: normal;">b. Please ensure all information is accurate and up-to-date.</span><br>
+   <span style="font-weight: normal;">c. Please read each section carefully before filling out the form.</span><br>
+   <span style="font-weight: normal;">d. Please fill the date in DD-MM-YY format.</span>
+</div>
+</div>
+
+<form class="needs-validation" novalidate>
+
+<div class="spacer">
+   <div class="section-header">SECTION 1: Basic Account Information</div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-4">
+    <div class="spacer mb-1">1. Account Type<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Account Type" required>
+      <option selected disabled value="">-- Select Account Type --</option>
+      <option value="savings">Savings Account</option>
+      <option value="current">Current Account</option>
+      <option value="fixed">Fixed Deposit</option>
+      <option value="recurring">Recurring Deposit</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select an account type.
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="spacer mb-1">2. Customer Type<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Customer Type" required>
+      <option selected disabled value="">Choose Customer Type</option>
+      <option value="individual">Individual</option>
+      <option value="non-individual">Non-Individual</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select customer type.
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="spacer mb-1">3. Preferred Branch<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Preferred Branch" required>
+      <option selected disabled value="">-- Select Branch --</option>
+      <option value="mumbai">Mumbai Main</option>
+      <option value="delhi">Delhi Central</option>
+      <option value="bangalore">Bangalore South</option>
+      <option value="chennai">Chennai Anna Nagar</option>
+      <option value="kolkata">Kolkata Park Street</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a preferred branch.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="spacer mb-1">4. Date of Application<a style="color: red;">*</a>:</div>
+    <input type="date" class="form-control" id="applicationDate" name="applicationDate" required>
+    <div class="invalid-feedback">
+      Please select the application date.
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">SECTION 2: Contact & Verification</div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="email" class="form-label fw-bold">6. E-Mail ID<a style="color: red;">*</a>:</label>
+    <div class="email-otp-wrapper">
+      <div class="input-wrapper flex-grow-1">
+        <input type="email" class="form-control input-with-icons" id="email" placeholder="name@example.com" name="email" required>
+        <div class="input-icons">
+          <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+          <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('email')"></i>
+        </div>
+      </div>
+      <button type="button" class="verify-btn" id="sendEmailOtp" onclick="sendEmailOTP()">Send OTP</button>
+    </div>
+    <div class="invalid-feedback">
+      Please enter a valid email address.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="emailOtp" class="form-label fw-bold">7. E-Mail OTP<a style="color: red;">*</a>:</label>
+    <div class="email-otp-wrapper">
+      <div class="input-wrapper flex-grow-1">
+        <input type="text" class="form-control input-with-icons" id="emailOtp" placeholder="Enter 6-digit OTP" maxlength="6" pattern="\d{6}" inputmode="numeric" disabled required>
+        <div class="input-icons">
+          <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+          <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('emailOtp')"></i>
+        </div>
+      </div>
+      <button type="button" class="verify-btn" id="verifyEmailOtp" onclick="verifyEmailOtp()">Verify</button>
+    </div>
+    <div class="invalid-feedback">
+      Please enter the OTP sent to your email.
+    </div>
+    <small class="text-muted">OTP will be sent to your email address</small>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="mobile" class="form-label fw-bold">8. Mobile Number<a style="color: red;">*</a>:</label>
+    <div class="input-wrapper">
+      <input type="tel" class="form-control input-with-icons" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="\d{10}" maxlength="10" inputmode="numeric" required>
+      <div class="input-icons">
+        <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+        <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('mobile')"></i>
+      </div>
+    </div>
+    <div class="invalid-feedback">
+      Please enter a valid 10-digit mobile number.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="alternateMobile" class="form-label fw-bold">9. Alternate Mobile Number:</label>
+    <div class="input-wrapper">
+      <input type="tel" class="form-control input-with-icons" id="alternateMobile" name="alternateMobile" placeholder="Enter 10-digit alternate number" pattern="\d{10}" maxlength="10" inputmode="numeric">
+      <div class="input-icons">
+        <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+      </div>
+    </div>
+    <div class="invalid-feedback">
+      Please enter a valid 10-digit mobile number.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="mobileOtp" class="form-label fw-bold">10. Mobile OTP (for Aadhaar)<a style="color: red;">*</a>:</label>
+    <div class="input-wrapper">
+      <input type="text" class="form-control input-with-icons" id="mobileOtp" placeholder="Enter 6-digit OTP sent to mobile" maxlength="6" pattern="\d{6}" inputmode="numeric" required>
+      <div class="input-icons">
+        <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+        <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('mobileOtp')"></i>
+      </div>
+    </div>
+    <div class="invalid-feedback">
+      Please enter the OTP sent to your mobile.
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">SECTION 3: Aadhaar (UIDAI) Details</div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="aadhaar" class="form-label fw-bold">11. Aadhaar Number<a style="color: red;">*</a>:</label>
+    <div class="input-wrapper">
+      <input type="text" class="form-control input-with-icons" id="aadhaar" placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="\d{12}" inputmode="numeric" autocomplete="off" required>
+      <div class="input-icons">
+        <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+        <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('aadhaar')"></i>
+      </div>
+    </div>
+    <div class="invalid-feedback">
+        Please enter a valid 12-digit Aadhaar number (digits only).
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="aadhaarOtp" class="form-label fw-bold">12. Aadhaar OTP<a style="color: red;">*</a>:</label>
+    <div class="input-wrapper">
+      <input type="text" class="form-control input-with-icons" id="aadhaarOtp" placeholder="Enter 6-digit Aadhaar OTP" maxlength="6" pattern="\d{6}" inputmode="numeric" required>
+      <div class="input-icons">
+        <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+        <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('aadhaarOtp')"></i>
+      </div>
+    </div>
+    <div class="invalid-feedback">
+      Please enter the Aadhaar OTP.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="aadhaarName" class="form-label fw-bold">13. Aadhaar Name<a style="color: red;">*</a>:</label>
+    <div class="input-wrapper">
+      <input type="text" class="form-control input-with-icons" id="aadhaarName" placeholder="Name as per Aadhaar" required>
+      <div class="input-icons">
+        <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+        <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('aadhaarName')"></i>
+      </div>
+    </div>
+    <div class="invalid-feedback">
+      Please enter name as per Aadhaar.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="aadhaarDob" class="form-label fw-bold">14. Date of Birth (as per Aadhaar)<a style="color: red;">*</a>:</label>
+    <input type="date" class="form-control" id="aadhaarDob" name="aadhaarDob" required>
+    <div class="invalid-feedback">
+      Please select date of birth as per Aadhaar.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="spacer mb-1">15. Gender<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Gender" required>
+      <option selected disabled value="">Choose gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select your gender.
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">SECTION 4: Personal Information</div>
+</div>
+
+<div class="spacer">16. Full Legal Name<a style="color: red;">*</a>:</div>
+<div class="row mb-3">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="First name" aria-label="First name" required>
+    <div class="invalid-feedback">
+      Please enter your first name.
+    </div>
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Middle name" aria-label="Middle name">
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" required>
+    <div class="invalid-feedback">
+      Please enter your last name.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="fatherName" class="form-label fw-bold">17. Father's Name<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="fatherName" placeholder="Enter father's full name" required>
+    <div class="invalid-feedback">
+      Please enter father's name.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="motherName" class="form-label fw-bold">18. Mother's Name<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="motherName" placeholder="Enter mother's full name" required>
+    <div class="invalid-feedback">
+      Please enter mother's name.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="spouseName" class="form-label fw-bold">19. Spouse/Guardian Name (Care Of)<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="spouseName" placeholder="Enter spouse/guardian name" required>
+    <div class="invalid-feedback">
+      Please enter spouse/guardian name.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="spacer mb-1">20. Marital Status<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Marital Status" required>
+      <option selected disabled value="">Choose marital status</option>
+      <option value="single">Single</option>
+      <option value="married">Married</option>
+      <option value="widowed">Widowed</option>
+      <option value="divorced">Divorced</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select marital status.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-4">
+    <label for="nationality" class="form-label fw-bold">21. Nationality<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="nationality" placeholder="Enter nationality" required>
+    <div class="invalid-feedback">
+      Please enter nationality.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="religion" class="form-label fw-bold">22. Religion:</label>
+    <input type="text" class="form-control" id="religion" placeholder="Enter religion">
+  </div>
+  <div class="col-md-4">
+    <div class="spacer mb-1">23. Residential Status<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Residential Status" required>
+      <option selected disabled value="">Choose status</option>
+      <option value="resident">Resident</option>
+      <option value="nri">NRI</option>
+      <option value="oci">OCI</option>
+      <option value="pio">PIO</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select residential status.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="placeOfBirth" class="form-label fw-bold">24. Place of Birth:</label>
+    <input type="text" class="form-control" id="placeOfBirth" placeholder="Enter place of birth">
+  </div>
+  <div class="col-md-6">
+    <label for="countryOfBirth" class="form-label fw-bold">25. Country of Birth:</label>
+    <input type="text" class="form-control" id="countryOfBirth" placeholder="Enter country of birth">
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">SECTION 5: Address Details</div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="street" class="form-label fw-bold">26. Street/ House/ Landmark<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="street" placeholder="Enter street/house/landmark" required>
+    <div class="invalid-feedback">
+      Please enter street/house/landmark.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="area" class="form-label fw-bold">27. Area / Locality<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="area" placeholder="Enter area/locality" required>
+    <div class="invalid-feedback">
+      Please enter area/locality.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-3">
+    <label for="location" class="form-label fw-bold">28. Location/Village/Town<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="location" placeholder="Enter location" required>
+    <div class="invalid-feedback">
+      Please enter location.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="postOffice" class="form-label fw-bold">29. Post Office<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="postOffice" placeholder="Enter post office" required>
+    <div class="invalid-feedback">
+      Please enter post office.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="city" class="form-label fw-bold">30. City / District<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="city" placeholder="Enter city/district" required>
+    <div class="invalid-feedback">
+      Please enter city/district.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="state" class="form-label fw-bold">31. State<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="state" placeholder="Enter state" required>
+    <div class="invalid-feedback">
+      Please enter state.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-4">
+    <label for="country" class="form-label fw-bold">32. Country<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="country" placeholder="Enter country" required>
+    <div class="invalid-feedback">
+      Please enter country.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="pincode" class="form-label fw-bold">33. Pincode<a style="color: red;">*</a>:</label>
+      <input type="text" class="form-control" id="pincode" placeholder="Enter 6-digit pincode" maxlength="6" pattern="\d{6}" inputmode="numeric" required>
+    <div class="invalid-feedback">
+        Please enter a valid 6-digit pincode.
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="spacer mb-1">34. Type of Address<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Address Type" required>
+      <option selected disabled value="">Choose address type</option>
+      <option value="residential">Residential</option>
+      <option value="office">Office</option>
+      <option value="other">Other</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select address type.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="spacer mb-1">35. Is Permanent Address Same as Current?</div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="sameAddress" id="sameAddressYes" value="yes">
+      <label class="form-check-label" for="sameAddressYes">Yes</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="sameAddress" id="sameAddressNo" value="no">
+      <label class="form-check-label" for="sameAddressNo">No</label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="permanentAddress" class="form-label fw-bold">36. Permanent Address (if different):</label>
+    <textarea class="form-control" id="permanentAddress" rows="3" placeholder="Enter permanent address if different from current"></textarea>
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">SECTION 6: Employment & Financials</div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="spacer mb-1">37. Occupation Type<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Occupation Type" required>
+      <option selected disabled value="">Choose occupation type</option>
+      <option value="salaried">Salaried</option>
+      <option value="business">Business</option>
+      <option value="retired">Retired</option>
+      <option value="student">Student</option>
+      <option value="housewife">Housewife</option>
+      <option value="other">Other</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select occupation type.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="employerName" class="form-label fw-bold">38. Employer Name / Business Name:</label>
+    <input type="text" class="form-control" id="employerName" placeholder="Enter employer/business name">
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="natureOfBusiness" class="form-label fw-bold">39. Nature of Business / Industry:</label>
+    <input type="text" class="form-control" id="natureOfBusiness" placeholder="Enter nature of business">
+  </div>
+  <div class="col-md-6">
+    <label for="designation" class="form-label fw-bold">40. Designation / Role:</label>
+    <input type="text" class="form-control" id="designation" placeholder="Enter designation">
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="spacer mb-1">41. Annual Income Range<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Annual Income" required>
+      <option selected disabled value="">Choose income range</option>
+      <option value="below-1lakh">Below ₹1 Lakh</option>
+      <option value="1-3lakh">₹1-3 Lakh</option>
+      <option value="3-5lakh">₹3-5 Lakh</option>
+      <option value="5-10lakh">₹5-10 Lakh</option>
+      <option value="above-10lakh">Above ₹10 Lakh</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select income range.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="spacer mb-1">42. Source of Funds<a style="color: red;">*</a>:</div>
+    <select class="form-select" aria-label="Source of Funds" required>
+      <option selected disabled value="">Choose source of funds</option>
+      <option value="salary">Salary</option>
+      <option value="business">Business</option>
+      <option value="investments">Investments</option>
+      <option value="others">Others</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select source of funds.
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">SECTION 7: Banking & ID Details</div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <label for="panNumber" class="form-label fw-bold">47. PAN Number<a style="color: red;">*</a>:</label>
+    <div class="input-wrapper">
+      <input type="text" class="form-control input-with-icons" id="panNumber" placeholder="Enter PAN (e.g. ABCDE1234F)" maxlength="10" pattern="[A-Z]{5}[0-9]{4}[A-Z]" style="text-transform:uppercase;" autocomplete="off" required>
+      <div class="input-icons">
+        <i class="fas fa-check input-icon check-icon" title="Valid"></i>
+        <i class="fas fa-times input-icon clear-btn" title="Clear" onclick="clearInput('panNumber')"></i>
+      </div>
+    </div>
+    <div class="invalid-feedback">
+        Please enter a valid PAN (format: 5 letters, 4 digits, 1 letter).
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="panHolderName" class="form-label fw-bold">48. PAN Holder Name<a style="color: red;">*</a>:</label>
+    <input type="text" class="form-control" id="panHolderName" placeholder="Name as per PAN card" required>
+    <div class="invalid-feedback">
+      Please enter name as per PAN card.
+    </div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-4">
+    <label for="dlNumber" class="form-label fw-bold">49. Driving Licence Number:</label>
+    <input type="text" class="form-control" id="dlNumber" placeholder="Enter DL number">
+  </div>
+  <div class="col-md-4">
+    <label for="dlDob" class="form-label fw-bold">50. Driving Licence DOB:</label>
+    <input type="date" class="form-control" id="dlDob" name="dlDob">
+  </div>
+  <div class="col-md-4">
+    <label for="dlName" class="form-label fw-bold">51. Driving Licence Name:</label>
+    <input type="text" class="form-control" id="dlName" placeholder="Name as per DL">
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">SECTION 8: Document Uploads</div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <label for="aadhaarUpload" class="form-label fw-bold">58. Upload Aadhaar Card (Front & Back)<a style="color: red;">*</a>:</label>
+    <input type="file" class="form-control" id="aadhaarUpload" name="aadhaarUpload" accept="image/*,application/pdf" multiple required onchange="previewFiles(this, 'aadhaarPreview')">
+    <div class="invalid-feedback">
+      Please upload Aadhaar card (both sides).
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div id="aadhaarPreview" class="preview-container">
+      <div class="preview-placeholder">
+        <i class="fas fa-image" style="font-size: 2rem; color: #ccc;"></i>
+        <p class="text-muted mt-2">Aadhaar preview will appear here</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <label for="panUpload" class="form-label fw-bold">59. Upload PAN Card<a style="color: red;">*</a>:</label>
+    <input type="file" class="form-control" id="panUpload" name="panUpload" accept="image/*,application/pdf" required onchange="previewFiles(this, 'panPreview')">
+    <div class="invalid-feedback">
+      Please upload PAN card.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div id="panPreview" class="preview-container">
+      <div class="preview-placeholder">
+        <i class="fas fa-image" style="font-size: 2rem; color: #ccc;"></i>
+        <p class="text-muted mt-2">PAN card preview will appear here</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <label for="passportDlUpload" class="form-label fw-bold">60. Upload Passport / Driving Licence:</label>
+    <input type="file" class="form-control" id="passportDlUpload" name="passportDlUpload" accept="image/*,application/pdf" onchange="previewFiles(this, 'passportDlPreview')">
+  </div>
+  <div class="col-md-6">
+    <div id="passportDlPreview" class="preview-container">
+      <div class="preview-placeholder">
+        <i class="fas fa-image" style="font-size: 2rem; color: #ccc;"></i>
+        <p class="text-muted mt-2">Passport/DL preview will appear here</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <label for="addressProofUpload" class="form-label fw-bold">62. Upload Address Proof (if different):</label>
+    <input type="file" class="form-control" id="addressProofUpload" name="addressProofUpload" accept="image/*,application/pdf" onchange="previewFiles(this, 'addressProofPreview')">
+  </div>
+  <div class="col-md-6">
+    <div id="addressProofPreview" class="preview-container">
+      <div class="preview-placeholder">
+        <i class="fas fa-image" style="font-size: 2rem; color: #ccc;"></i>
+        <p class="text-muted mt-2">Address proof preview will appear here</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <label for="signatureUpload" class="form-label fw-bold">63. Upload Signature<a style="color: red;">*</a>:</label>
+    <input type="file" class="form-control" id="signatureUpload" name="signatureUpload" accept="image/*" required onchange="previewFiles(this, 'signaturePreview')">
+    <div class="invalid-feedback">
+      Please upload your signature.
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div id="signaturePreview" class="preview-container">
+      <div class="preview-placeholder">
+        <i class="fas fa-image" style="font-size: 2rem; color: #ccc;"></i>
+        <p class="text-muted mt-2">Signature preview will appear here</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full-screen image preview -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">Document Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <img id="modalImage" src="" alt="Document Preview" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+        <div id="modalPdfViewer" style="width: 100%; height: 100%; display: none;">
+          <embed id="pdfEmbed" src="" type="application/pdf" width="100%" height="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+   <div class="section-header">F. APPLICANT'S DECLARATION </div>
+</div>
+<div class="px-4"> 
+  <div class="border p-3 mb-3 rounded bg-light">
+    <ul class="mb-0">
+      <li class="mb-2">
+        <span class="fw-semibold">I hereby declare</span> that the details furnished above are true and correct to the best of my knowledge and belief, and I undertake to inform the intermediary of any changes thereto immediately. If any information is found to be false, untrue, misleading, or misrepresenting, I understand that I may be held liable.
+      </li>
+      <li class="mb-2">
+        I confirm that this application is not being made for the purpose of contravening any Act, rules, regulations, notifications or directions issued by any governmental or statutory authority.
+      </li>
+      <li class="mb-2">
+        I consent to receiving information from the Central KYC Registry (CKYCR) via SMS and/or email at the registered mobile number and email address provided above, and to downloading my CKYCR information.
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-check mb-4">
+    <input class="form-check-input" type="checkbox" id="declarationAgree" required>
+    <label class="form-check-label" for="declarationAgree">
+      I have read and agree to the Applicant's Declaration stated above.
+    </label>
+    <div id="invalidCheck3Feedback" class="invalid-feedback">
+      Please confirm your agreement before submitting the form.
+    </div>
+  </div>
+</div>
+
+    <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+    </form>
+  </div>
+
+<!-- Warning alert container -->
+<div id="validationWarnings" class="container mt-3" style="display: none;">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h5 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Form Validation Errors</h5>
+    <p>Please complete the following sections before submitting:</p>
+    <ul id="warningList" class="mb-0"></ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  (() => {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        event.preventDefault()
+        event.stopPropagation()
+        
+        if (!form.checkValidity()) {
+          form.classList.add('was-validated')
+          validateFormSections(form)
+        } else {
+          // Form is valid, collect data and redirect to dashboard
+          form.classList.add('was-validated')
+          collectAndSaveFormData(form);
+        }
+      }, false)
+    })
+  })()
+
+  // Function to validate form by sections and show warnings
+  function validateFormSections(form) {
+    const sections = [
+      {
+        name: 'SECTION 1: Basic Account Information',
+        selector: '.section-header:contains("SECTION 1")',
+        fields: ['select[aria-label="Account Type"]', 'select[aria-label="Customer Type"]', 'select[aria-label="Preferred Branch"]', '#applicationDate']
+      },
+      {
+        name: 'SECTION 2: Contact & Verification',
+        selector: '.section-header:contains("SECTION 2")',
+        fields: ['#email', '#emailOtp', '#mobile', '#mobileOtp']
+      },
+      {
+        name: 'SECTION 3: Aadhaar (UIDAI) Details',
+        selector: '.section-header:contains("SECTION 3")',
+        fields: ['#aadhaar', '#aadhaarOtp', '#aadhaarName', '#aadhaarDob', 'select[aria-label="Gender"]']
+      },
+      {
+        name: 'SECTION 4: Personal Information',
+        selector: '.section-header:contains("SECTION 4")',
+        fields: ['input[placeholder="First name"]', 'input[placeholder="Last name"]', '#fatherName', '#motherName', '#spouseName', 'select[aria-label="Marital Status"]', '#nationality', 'select[aria-label="Residential Status"]']
+      },
+      {
+        name: 'SECTION 5: Address Details',
+        selector: '.section-header:contains("SECTION 5")',
+        fields: ['#street', '#area', '#location', '#postOffice', '#city', '#state', '#country', '#pincode', 'select[aria-label="Address Type"]']
+      },
+      {
+        name: 'SECTION 6: Employment & Financials',
+        selector: '.section-header:contains("SECTION 6")',
+        fields: ['select[aria-label="Occupation Type"]', 'select[aria-label="Annual Income"]', 'select[aria-label="Source of Funds"]']
+      },
+      {
+        name: 'SECTION 7: Banking & ID Details',
+        selector: '.section-header:contains("SECTION 7")',
+        fields: ['#panNumber', '#panHolderName']
+      },
+      {
+        name: 'SECTION 8: Document Uploads',
+        selector: '.section-header:contains("SECTION 8")',
+        fields: ['#aadhaarUpload', '#panUpload', '#signatureUpload']
+      },
+      {
+        name: 'Applicant\'s Declaration',
+        selector: '.section-header:contains("DECLARATION")',
+        fields: ['#declarationAgree']
+      }
+    ];
+
+    const invalidSections = [];
+    const warningDetails = [];
+
+    sections.forEach(section => {
+      const emptyRequiredFields = [];
+      
+      section.fields.forEach(fieldSelector => {
+        const field = form.querySelector(fieldSelector);
+        if (field && field.hasAttribute('required')) {
+          if (!field.value || field.value.trim() === '' || (field.type === 'checkbox' && !field.checked)) {
+            // Get field label
+            let fieldLabel = '';
+            const label = form.querySelector(`label[for="${field.id}"]`);
+            if (label) {
+              fieldLabel = label.textContent.replace('*', '').replace(':', '').trim();
+            } else if (field.placeholder) {
+              fieldLabel = field.placeholder;
+            } else if (field.getAttribute('aria-label')) {
+              fieldLabel = field.getAttribute('aria-label');
+            } else {
+              fieldLabel = field.id || 'Unknown field';
+            }
+            emptyRequiredFields.push(fieldLabel);
+          }
+        }
+      });
+
+      if (emptyRequiredFields.length > 0) {
+        invalidSections.push({
+          name: section.name,
+          fields: emptyRequiredFields,
+          element: document.querySelector(section.selector) || findSectionHeader(section.name)
+        });
+      }
+    });
+
+    if (invalidSections.length > 0) {
+      displayWarnings(invalidSections);
+      // Scroll to first invalid section
+      if (invalidSections[0].element) {
+        invalidSections[0].element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Highlight the section briefly
+        invalidSections[0].element.style.backgroundColor = '#ffebee';
+        setTimeout(() => {
+          invalidSections[0].element.style.backgroundColor = '';
+        }, 2000);
+      }
+    }
+  }
+
+  // Helper function to find section header by text content
+  function findSectionHeader(sectionName) {
+    const headers = document.querySelectorAll('.section-header, .section-header-inst');
+    for (let header of headers) {
+      if (header.textContent.includes(sectionName.split(':')[0]) || 
+          header.textContent.includes(sectionName)) {
+        return header;
+      }
+    }
+    return null;
+  }
+
+  // Function to display validation warnings
+  function displayWarnings(invalidSections) {
+    const warningContainer = document.getElementById('validationWarnings');
+    const warningList = document.getElementById('warningList');
+    
+    // Clear previous warnings
+    warningList.innerHTML = '';
+    
+    // Add each invalid section to the warning list
+    invalidSections.forEach(section => {
+      const listItem = document.createElement('li');
+      listItem.className = 'mb-2';
+      listItem.innerHTML = `<strong>${section.name}</strong>`;
+      
+      if (section.fields.length > 0) {
+        const fieldList = document.createElement('ul');
+        fieldList.className = 'mt-1';
+        section.fields.forEach(field => {
+          const fieldItem = document.createElement('li');
+          fieldItem.textContent = field;
+          fieldList.appendChild(fieldItem);
+        });
+        listItem.appendChild(fieldList);
+      }
+      
+      // Make section name clickable to scroll to it
+      listItem.style.cursor = 'pointer';
+      listItem.addEventListener('click', () => {
+        if (section.element) {
+          section.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          section.element.style.backgroundColor = '#ffebee';
+          setTimeout(() => {
+            section.element.style.backgroundColor = '';
+          }, 2000);
+        }
+      });
+      
+      warningList.appendChild(listItem);
+    });
+    
+    // Show the warning container
+    warningContainer.style.display = 'block';
+    warningContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // File preview functionality
+  function previewFiles(input, previewContainerId) {
+    const previewContainer = document.getElementById(previewContainerId);
+    const files = input.files;
+    
+    if (files.length === 0) {
+      // Reset to placeholder if no files
+      previewContainer.innerHTML = `
+        <div class="preview-placeholder">
+          <i class="fas fa-image" style="font-size: 2rem; color: #ccc;"></i>
+          <p class="text-muted mt-2">Preview will appear here</p>
+        </div>
+      `;
+      return;
+    }
+
+    previewContainer.innerHTML = '';
+
+    if (files.length === 1) {
+      // Single file preview
+      const file = files[0];
+      displaySingleFile(file, previewContainer);
+    } else {
+      // Multiple files preview
+      const multipleContainer = document.createElement('div');
+      multipleContainer.className = 'multiple-files-container';
+      
+      Array.from(files).forEach((file, index) => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-preview-item';
+        
+        if (file.type.startsWith('image/')) {
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.onclick = () => openFullScreen(img.src, file.name);
+          fileItem.appendChild(img);
+          
+          if (index === 0 && files.length > 1) {
+            const badge = document.createElement('span');
+            badge.className = 'file-count-badge';
+            badge.textContent = files.length;
+            fileItem.appendChild(badge);
+          }
+        }
+        
+        multipleContainer.appendChild(fileItem);
+      });
+      
+      previewContainer.appendChild(multipleContainer);
+      
+      // Add file info
+      const fileInfo = document.createElement('div');
+      fileInfo.className = 'preview-file-info';
+      fileInfo.innerHTML = `
+        <div class="preview-file-name">${files.length} files selected</div>
+        <div class="preview-file-size">Total size: ${formatFileSize(Array.from(files).reduce((total, file) => total + file.size, 0))}</div>
+      `;
+      previewContainer.appendChild(fileInfo);
+    }
+  }
+
+  function displaySingleFile(file, container) {
+    if (file.type.startsWith('image/')) {
+      // Image preview
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      img.className = 'preview-image';
+      img.alt = file.name;
+      img.onclick = () => openFullScreen(img.src, file.name);
+      
+      // Load the image to get its actual dimensions
+      img.onload = function() {
+        // Show image at a reasonable preview size, max 180px height
+        const maxPreviewHeight = 180;
+        const maxPreviewWidth = container.offsetWidth - 20; // Account for padding
+        
+        if (this.naturalHeight > maxPreviewHeight || this.naturalWidth > maxPreviewWidth) {
+          // Scale down to fit within preview constraints
+          if (this.naturalWidth > maxPreviewWidth) {
+            this.style.width = maxPreviewWidth + 'px';
+            this.style.height = 'auto';
+          } else if (this.naturalHeight > maxPreviewHeight) {
+            this.style.height = maxPreviewHeight + 'px';
+            this.style.width = 'auto';
+          }
+        } else {
+          // Show at actual size if it fits
+          this.style.width = this.naturalWidth + 'px';
+          this.style.height = this.naturalHeight + 'px';
+        }
+      };
+      
+      container.appendChild(img);
+    } else if (file.type === 'application/pdf') {
+      // PDF preview
+      const pdfDiv = document.createElement('div');
+      pdfDiv.className = 'pdf-preview';
+      pdfDiv.innerHTML = `
+        <i class="fas fa-file-pdf"></i>
+        <div style="font-weight: bold;">${file.name}</div>
+        <div style="font-size: 0.8em;">Click to view PDF</div>
+      `;
+      pdfDiv.onclick = () => openFullScreen(URL.createObjectURL(file), file.name, true);
+      container.appendChild(pdfDiv);
+    }
+
+    // Add file info
+    const fileInfo = document.createElement('div');
+    fileInfo.className = 'preview-file-info';
+    fileInfo.innerHTML = `
+      <div class="preview-file-name">${file.name}</div>
+      <div class="preview-file-size">${formatFileSize(file.size)}</div>
+    `;
+    container.appendChild(fileInfo);
+  }
+
+  function openFullScreen(src, fileName, isPdf = false) {
+    const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+    const modalTitle = document.getElementById('imageModalLabel');
+    const modalImage = document.getElementById('modalImage');
+    const modalPdfViewer = document.getElementById('modalPdfViewer');
+    const pdfEmbed = document.getElementById('pdfEmbed');
+
+    modalTitle.textContent = fileName;
+
+    if (isPdf) {
+      modalImage.style.display = 'none';
+      modalPdfViewer.style.display = 'block';
+      pdfEmbed.src = src;
+    } else {
+      modalPdfViewer.style.display = 'none';
+      modalImage.style.display = 'block';
+      modalImage.src = src;
+    }
+
+    modal.show();
+  }
+
+  function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  // ---- Additional Field Validation / Input Filtering ----
+  (function addInputGuards(){
+    const numericIds = ['aadhaar','aadhaarOtp','mobile','alternateMobile','mobileOtp','emailOtp','pincode'];
+    numericIds.forEach(id => {
+      const el = document.getElementById(id);
+      if(!el) return;
+      // Block non-digit characters during input
+      el.addEventListener('input', e => {
+        const cleaned = e.target.value.replace(/[^0-9]/g,'');
+        if(cleaned !== e.target.value){
+          const pos = e.target.selectionStart - (e.target.value.length - cleaned.length);
+          e.target.value = cleaned;
+          e.target.setSelectionRange(pos,pos);
+        }
+        // Enforce max length if user pastes longer
+        if(el.maxLength > 0 && e.target.value.length > el.maxLength){
+          e.target.value = e.target.value.slice(0, el.maxLength);
+        }
+      });
+      // Prevent invalid keypresses (allow control keys)
+      el.addEventListener('keydown', e => {
+        if(
+          e.ctrlKey || e.metaKey || e.altKey ||
+          ['Backspace','Delete','ArrowLeft','ArrowRight','Tab','Home','End'].includes(e.key)
+        ) return;
+        if(!/[0-9]/.test(e.key)){
+          e.preventDefault();
+        }
+      });
+    });
+
+    // PAN field: auto uppercase & pattern assist
+    const pan = document.getElementById('panNumber');
+    if(pan){
+      pan.addEventListener('input', e => {
+        e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10);
+      });
+      pan.addEventListener('blur', () => {
+        const pattern = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+        if(pan.value && !pattern.test(pan.value)){
+          pan.setCustomValidity('Invalid PAN format. Expected 5 letters, 4 digits, 1 letter.');
+        } else {
+          pan.setCustomValidity('');
+        }
+      });
+    }
+
+    // Aadhaar: basic checksum placeholder (can be extended with Verhoeff algorithm later)
+    const aadhaar = document.getElementById('aadhaar');
+    if(aadhaar){
+      aadhaar.addEventListener('blur', () => {
+        if(aadhaar.value && !/^\d{12}$/.test(aadhaar.value)){
+          aadhaar.setCustomValidity('Aadhaar must be exactly 12 digits.');
+        } else {
+          aadhaar.setCustomValidity('');
+        }
+      });
+    }
+  })();
+
+  // Add click event to preview containers for better UX
+  document.addEventListener('DOMContentLoaded', function() {
+    const previewContainers = document.querySelectorAll('.preview-container');
+    previewContainers.forEach(container => {
+      container.addEventListener('click', function() {
+        const containerId = this.id;
+        const inputId = containerId.replace('Preview', 'Upload');
+        const input = document.getElementById(inputId);
+        if (input && this.querySelector('.preview-placeholder')) {
+          input.click();
+        }
+      });
+    });
+
+    // Initialize input validation and icon management
+    initializeInputValidation();
+  });
+
+  // Function to clear input field
+  function clearInput(inputId) {
+    const input = document.getElementById(inputId);
+    if (input) {
+      input.value = '';
+      input.setCustomValidity(''); // Clear any custom validation
+      input.focus();
+      updateInputIcons(input);
+      // Trigger validation
+      input.dispatchEvent(new Event('input'));
+      input.dispatchEvent(new Event('blur'));
+    }
+  }
+
+  // Resend API Configuration
+  const RESEND_API_KEY = 're_QWS8Hw63_BTWNke73FKKZ2scNwgqs8UhX';
+  let generatedOTP = '';
+
+  // Function to send Email OTP using Resend API
+  async function sendEmailOTP() {
+    const emailInput = document.getElementById('email');
+    const sendButton = document.getElementById('sendEmailOtp');
+    const email = emailInput.value.trim();
+
+    // Validate email
+    if (!email || !emailInput.checkValidity()) {
+      alert('Please enter a valid email address first');
+      emailInput.focus();
+      return;
+    }
+
+    // Generate 6-digit OTP
+    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Disable button and show loading state
+    sendButton.disabled = true;
+    sendButton.textContent = 'Sending...';
+
+    try {
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          from: 'KYC Verification <onboarding@resend.dev>',
+          to: [email],
+          subject: 'Your KYC Email Verification OTP',
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
+              <h2 style="color: #333; text-align: center;">KYC Email Verification</h2>
+              <p style="font-size: 16px; color: #555;">Dear User,</p>
+              <p style="font-size: 16px; color: #555;">Your OTP for email verification is:</p>
+              <div style="background-color: #f5f5f5; padding: 20px; text-align: center; margin: 20px 0; border-radius: 5px;">
+                <h1 style="color: #007bff; font-size: 36px; margin: 0; letter-spacing: 5px;">${generatedOTP}</h1>
+              </div>
+              <p style="font-size: 14px; color: #777;">This OTP is valid for 10 minutes.</p>
+              <p style="font-size: 14px; color: #777;">If you did not request this OTP, please ignore this email.</p>
+              <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 20px 0;">
+              <p style="font-size: 12px; color: #999; text-align: center;">KYC Form - Secure Verification System</p>
+            </div>
+          `
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('OTP sent successfully! Please check your email.');
+        sendButton.textContent = 'OTP Sent ✓';
+        sendButton.style.backgroundColor = '#28a745';
+        
+        // Enable the OTP input field
+        document.getElementById('emailOtp').disabled = false;
+        document.getElementById('emailOtp').focus();
+        
+        // Re-enable send button after 60 seconds
+        setTimeout(() => {
+          sendButton.disabled = false;
+          sendButton.textContent = 'Resend OTP';
+          sendButton.style.backgroundColor = '#28a745';
+        }, 60000);
+      } else {
+        throw new Error(data.message || 'Failed to send OTP');
+      }
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      alert('Failed to send OTP. Please try again. Error: ' + error.message);
+      sendButton.disabled = false;
+      sendButton.textContent = 'Send OTP';
+      sendButton.style.backgroundColor = '#28a745';
+    }
+  }
+
+  // Function to verify email OTP
+  function verifyEmailOtp() {
+    const otpInput = document.getElementById('emailOtp');
+    const verifyButton = document.getElementById('verifyEmailOtp');
+    const enteredOTP = otpInput.value.trim();
+    
+    if (!enteredOTP || enteredOTP.length !== 6) {
+      alert('Please enter a valid 6-digit OTP');
+      return;
+    }
+
+    // Disable button and show loading state
+    verifyButton.disabled = true;
+    verifyButton.textContent = 'Verifying...';
+
+    // Verify OTP matches the generated one
+    setTimeout(() => {
+      if (enteredOTP === generatedOTP) {
+        alert('OTP verified successfully!');
+        otpInput.style.borderColor = '#28a745';
+        otpInput.disabled = true;
+        verifyButton.textContent = 'Verified ✓';
+        verifyButton.style.backgroundColor = '#28a745';
+        updateInputIcons(otpInput);
+      } else {
+        alert('Invalid OTP. Please check your email and try again.');
+        verifyButton.disabled = false;
+        verifyButton.textContent = 'Verify';
+        otpInput.focus();
+      }
+    }, 1000);
+  }
+
+  // Function to update input icons based on validation state
+  function updateInputIcons(input) {
+    const wrapper = input.closest('.input-wrapper');
+    if (!wrapper) return;
+
+    const checkIcon = wrapper.querySelector('.check-icon');
+    const clearBtn = wrapper.querySelector('.clear-btn');
+    
+    if (!checkIcon) return;
+
+    // Always hide both icons first
+    checkIcon.classList.remove('show');
+    if (clearBtn) {
+      clearBtn.classList.remove('show');
+    }
+
+    const hasValue = input.value.trim().length > 0;
+    const isValid = input.checkValidity() && hasValue;
+
+    // Show only ONE icon based on state
+    if (!hasValue && clearBtn) {
+      // Field is empty AND has clear button - show cross icon only
+      clearBtn.classList.add('show');
+    } else if (isValid) {
+      // Field has valid data - show check icon only
+      checkIcon.classList.add('show');
+    }
+    // If field has invalid data or no icons available, show nothing
+  }
+
+  // Initialize input validation and icon management
+  function initializeInputValidation() {
+    const inputsWithIcons = document.querySelectorAll('.input-with-icons');
+    
+    inputsWithIcons.forEach(input => {
+      // Force hide all icons initially
+      const wrapper = input.closest('.input-wrapper');
+      if (wrapper) {
+        const checkIcon = wrapper.querySelector('.check-icon');
+        const clearBtn = wrapper.querySelector('.clear-btn');
+        if (checkIcon) checkIcon.classList.remove('show');
+        if (clearBtn) clearBtn.classList.remove('show');
+      }
+
+      // Add event listeners for real-time validation
+      input.addEventListener('input', function() {
+        updateInputIcons(this);
+      });
+
+      input.addEventListener('blur', function() {
+        updateInputIcons(this);
+      });
+
+      input.addEventListener('focus', function() {
+        updateInputIcons(this);
+      });
+
+      // Set initial state after a small delay to ensure DOM is ready
+      setTimeout(() => {
+        updateInputIcons(input);
+      }, 100);
+    });
+
+    // Special validation for email field
+    const emailInput = document.getElementById('email');
+    if (emailInput) {
+      emailInput.addEventListener('input', function() {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (this.value && emailPattern.test(this.value)) {
+          this.setCustomValidity('');
+        } else if (this.value) {
+          this.setCustomValidity('Please enter a valid email address');
+        } else {
+          this.setCustomValidity(''); // Clear validation for empty field
+        }
+        updateInputIcons(this);
+      });
+    }
+
+    // Special validation for OTP fields
+    const otpFields = ['emailOtp', 'mobileOtp', 'aadhaarOtp'];
+    otpFields.forEach(fieldId => {
+      const field = document.getElementById(fieldId);
+      if (field) {
+        field.addEventListener('input', function() {
+          const otpPattern = /^\d{6}$/;
+          if (this.value && otpPattern.test(this.value)) {
+            this.setCustomValidity('');
+          } else if (this.value) {
+            this.setCustomValidity('Please enter a valid 6-digit OTP');
+          } else {
+            this.setCustomValidity(''); // Clear validation for empty field
+          }
+          updateInputIcons(this);
+        });
+      }
+    });
+
+    // Special validation for mobile numbers
+    const mobileFields = ['mobile', 'alternateMobile'];
+    mobileFields.forEach(fieldId => {
+      const field = document.getElementById(fieldId);
+      if (field) {
+        field.addEventListener('input', function() {
+          const mobilePattern = /^\d{10}$/;
+          if (this.value && mobilePattern.test(this.value)) {
+            this.setCustomValidity('');
+          } else if (this.value) {
+            this.setCustomValidity('Please enter a valid 10-digit mobile number');
+          } else {
+            this.setCustomValidity(''); // Clear validation for empty field
+          }
+          updateInputIcons(this);
+        });
+      }
+    });
+
+    // Special validation for Aadhaar number
+    const aadhaarField = document.getElementById('aadhaar');
+    if (aadhaarField) {
+      aadhaarField.addEventListener('input', function() {
+        const aadhaarPattern = /^\d{12}$/;
+        if (this.value && aadhaarPattern.test(this.value)) {
+          this.setCustomValidity('');
+        } else if (this.value) {
+          this.setCustomValidity('Please enter a valid 12-digit Aadhaar number');
+        }
+        updateInputIcons(this);
+      });
+    }
+
+    // Special validation for PAN number
+    const panField = document.getElementById('panNumber');
+    if (panField) {
+      panField.addEventListener('input', function() {
+        const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+        if (this.value && panPattern.test(this.value)) {
+          this.setCustomValidity('');
+        } else if (this.value) {
+          this.setCustomValidity('Please enter a valid PAN (format: 5 letters, 4 digits, 1 letter)');
+        }
+        updateInputIcons(this);
+      });
+    }
+  }
+
+  // Function to collect all form data and save to localStorage
+  function collectAndSaveFormData(form) {
+    const formData = {
+      id: Date.now(), // Unique ID based on timestamp
+      submissionDate: new Date().toISOString(),
+      status: 'pending', // Default status
+      
+      // Section 1: Basic Account Information
+      accountType: form.querySelector('select[aria-label="Account Type"]')?.value || '',
+      customerType: form.querySelector('select[aria-label="Customer Type"]')?.value || '',
+      preferredBranch: form.querySelector('select[aria-label="Preferred Branch"]')?.value || '',
+      applicationDate: form.querySelector('#applicationDate')?.value || '',
+      
+      // Section 2: Contact & Verification
+      email: form.querySelector('#email')?.value || '',
+      mobile: form.querySelector('#mobile')?.value || '',
+      alternateMobile: form.querySelector('#alternateMobile')?.value || '',
+      
+      // Section 3: Aadhaar Details
+      aadhaar: form.querySelector('#aadhaar')?.value || '',
+      aadhaarName: form.querySelector('#aadhaarName')?.value || '',
+      dob: form.querySelector('#aadhaarDob')?.value || '',
+      gender: form.querySelector('select[aria-label="Gender"]')?.value || '',
+      
+      // Section 4: Personal Information
+      firstName: form.querySelector('input[placeholder="First name"]')?.value || '',
+      middleName: form.querySelector('input[placeholder="Middle name"]')?.value || '',
+      lastName: form.querySelector('input[placeholder="Last name"]')?.value || '',
+      fullName: `${form.querySelector('input[placeholder="First name"]')?.value || ''} ${form.querySelector('input[placeholder="Middle name"]')?.value || ''} ${form.querySelector('input[placeholder="Last name"]')?.value || ''}`.trim(),
+      fatherName: form.querySelector('#fatherName')?.value || '',
+      motherName: form.querySelector('#motherName')?.value || '',
+      spouseName: form.querySelector('#spouseName')?.value || '',
+      maritalStatus: form.querySelector('select[aria-label="Marital Status"]')?.value || '',
+      nationality: form.querySelector('#nationality')?.value || '',
+      religion: form.querySelector('#religion')?.value || '',
+      residentialStatus: form.querySelector('select[aria-label="Residential Status"]')?.value || '',
+      placeOfBirth: form.querySelector('#placeOfBirth')?.value || '',
+      countryOfBirth: form.querySelector('#countryOfBirth')?.value || '',
+      
+      // Section 5: Address Details
+      street: form.querySelector('#street')?.value || '',
+      area: form.querySelector('#area')?.value || '',
+      city: form.querySelector('#city')?.value || '',
+      district: form.querySelector('#district')?.value || '',
+      state: form.querySelector('#state')?.value || '',
+      pin: form.querySelector('#pin')?.value || '',
+      country: form.querySelector('#country')?.value || '',
+      residenceDuration: form.querySelector('#residenceDuration')?.value || '',
+      addressType: form.querySelector('select[aria-label="Address Type"]')?.value || '',
+      
+      // Section 6: Employment & Financials
+      occupation: form.querySelector('select[aria-label="Occupation"]')?.value || '',
+      employerName: form.querySelector('#employerName')?.value || '',
+      designation: form.querySelector('#designation')?.value || '',
+      annualIncome: form.querySelector('select[aria-label="Annual Income"]')?.value || '',
+      
+      // Section 7: Banking & ID Details
+      panNumber: form.querySelector('#panNumber')?.value || '',
+      passportNumber: form.querySelector('#passportNumber')?.value || '',
+      voterIdNumber: form.querySelector('#voterIdNumber')?.value || '',
+      drivingLicenseNumber: form.querySelector('#drivingLicenseNumber')?.value || ''
+    };
+    
+    // Get existing submissions or create new array
+    let submissions = JSON.parse(localStorage.getItem('kycSubmissions') || '[]');
+    
+    // Add new submission
+    submissions.push(formData);
+    
+    // Save to localStorage
+    localStorage.setItem('kycSubmissions', JSON.stringify(submissions));
+    
+    // Show success message
+    alert('Form submitted successfully! Redirecting to admin dashboard...');
+    
+    // Redirect to admin dashboard
+    window.location.href = 'admin-dashboard.html';
+  }
+</script>
+</body>
+</html>

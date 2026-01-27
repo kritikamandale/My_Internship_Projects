@@ -1,0 +1,42 @@
+*{padding: 0; margin: 0 ; box-sizing: border-box;}
+body{
+    overflow-x: hidden;
+}
+.carousel-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+
+}
+
+.card{
+  width: 500px;
+  height: 100%;
+  margin: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card img {
+  padding: 10px;
+  border-radius: 10px;
+}
+#navbar-example2 {
+  background-color: yellow;
+  padding: 20px;
+}
+.section-heading {
+  background-color: #ffe082;
+  padding: 5px;
+  margin-top: 10px;
+}
+.card-title {
+  text-decoration: none;
+  color: brown;
+  font-weight: 500;
+}
+
+.card-title:hover {
+  text-decoration: underline;
+  color: darkred;
+  cursor: pointer;
+}

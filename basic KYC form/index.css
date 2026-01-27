@@ -1,0 +1,261 @@
+body {
+  background-color: #ffffff;
+  color: #1b1a1a;
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.section-header {
+  background-color: #7d98e9;
+  padding: 5px 10px;
+  font-weight: bold;
+  border: 1px solid #000000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.col {
+  margin-bottom: 20px;
+}
+.col1 {
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+.spacer {
+  font-weight: bold;
+}
+.section-header-inst{
+    background-color: #d3d0d0;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Document Preview Styles */
+.preview-container {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  min-height: 120px;
+  max-height: 250px;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: auto;
+}
+
+.preview-container:hover {
+  border-color: #007bff;
+  background-color: #e3f2fd;
+}
+
+.preview-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100px;
+}
+
+.preview-placeholder i {
+  font-size: 1.5rem !important;
+  color: #ccc !important;
+}
+
+.preview-placeholder p {
+  font-size: 0.85rem;
+  margin-top: 8px !important;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 180px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  object-fit: contain;
+}
+
+.preview-image:hover {
+  transform: scale(1.02);
+}
+
+.preview-file-info {
+  background-color: #e9ecef;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 0.8em;
+  width: 100%;
+}
+
+.preview-file-name {
+  font-weight: bold;
+  color: #495057;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+
+.preview-file-size {
+  color: #6c757d;
+  font-size: 0.75em;
+}
+
+.multiple-files-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.file-preview-item {
+  position: relative;
+  display: inline-block;
+}
+
+.file-preview-item img {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.file-count-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-preview {
+  background-color: #dc3545;
+  color: white;
+  padding: 15px 10px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.pdf-preview i {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+/* Modal Enhancements */
+.modal-fullscreen .modal-body {
+  background-color: #000;
+}
+
+#modalImage {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Input field wrapper with icons and clear button */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icons {
+  padding-right: 80px; /* Space for icons */
+}
+
+.input-icons {
+  position: absolute;
+  right: 10px; /* Position inside the input field */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+  pointer-events: none; /* Allow clicking through container */
+}
+
+.input-icons > * {
+  pointer-events: auto; /* Re-enable clicks on icons */
+}
+
+.input-icon {
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 16px;
+  padding: 2px;
+  display: none !important; /* Force hidden by default */
+  position: relative;
+}
+
+.input-icon.show {
+  display: inline-block !important; /* Force show when needed */
+}
+
+.input-icon:hover {
+  color: #007bff;
+}
+
+.clear-btn {
+  color: #dc3545;
+}
+
+.clear-btn:hover {
+  color: #c82333;
+}
+
+.check-icon {
+  color: #28a745;
+}
+
+/* Verify button styling */
+.verify-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.verify-btn:hover {
+  background-color: #218838;
+}
+
+.verify-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Email OTP field wrapper */
+.email-otp-wrapper {
+  display: flex;
+  align-items: stretch;
+}

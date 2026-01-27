@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\kriti\\Desktop\\Internship\\internship_kyc\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B87BB1E8-CF24-952D-156E-CF18C511D98F}|C:\\Users\\kriti\\Desktop\\Internship\\internship_kyc|c:\\users\\kriti\\desktop\\internship\\internship_kyc\\index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{B87BB1E8-CF24-952D-156E-CF18C511D98F}|C:\\Users\\kriti\\Desktop\\Internship\\internship_kyc|solutionrelative:index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.aspx",
+              "DocumentMoniker": "C:\\Users\\kriti\\Desktop\\Internship\\internship_kyc\\index.aspx",
+              "RelativeDocumentMoniker": "index.aspx",
+              "ToolTip": "C:\\Users\\kriti\\Desktop\\Internship\\internship_kyc\\index.aspx",
+              "RelativeToolTip": "index.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-01-21T10:24:08.163Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
