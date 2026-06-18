@@ -73,11 +73,11 @@ KYC Form/
 This is a static, responsive recipe and cooking site built with **HTML5** and **Bootstrap 5**. It showcases Indian, Chinese, Italian, and Mexican recipes, along with a desserts carousel.
 
 ### Key Features
-- **Sticky scroll-spy navigation** (`navbar-example2` + `data-bs-spy="scroll"`) that keeps the active cuisine section highlighted while scrolling
-- **About/hero section** that introduces the website and its theme
-- **Bootstrap carousel** that presents a desserts showcase such as Gulab Jamun and Croissant with captions
-- **Cuisine sections** for Indian, Chinese, Italian, and Mexican dishes, each paired with images and short descriptions such as biryani, idli, manchurian, chow mein, pasta, lasagna, tacos, nachos, burritos, samosa, and spring rolls
-- Built entirely with **Bootstrap 5.3** components loaded from CDN, with custom styling in `index.css`
+- **Sticky scroll-spy navigation** (`navbar-example2` + `data-bs-spy="scroll"`) that keeps the active cuisine section highlighted while scrolling.
+- **About/hero section** that introduces the website and its theme.
+- **Bootstrap carousel** that presents a desserts showcase such as Gulab Jamun and Croissant with captions.
+- **Cuisine sections** for Indian, Chinese, Italian, and Mexican dishes, each paired with images and short descriptions such as biryani, idli, manchurian, chow mein, pasta, lasagna, tacos, nachos, burritos, samosa, and spring rolls.
+- Built entirely with **Bootstrap 5.3** components loaded from CDN, with custom styling in `index.css`.
 
 ### Project Structure
 ```
